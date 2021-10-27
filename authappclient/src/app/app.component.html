@@ -1,0 +1,21 @@
+<div>
+<div class="topnav">
+  <a [routeLink]="['']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">BookClub</a>
+  <a [routeLink]="['/favorites']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}" *ngIf='isLoggedIn'>Favorites</a>
+</div>
+<mat-card *ngIf="!isLoggedIn">
+  <mat-form-field class="example-from-field">
+    <mat-lable>Email</mat-lable>
+    <input type="email" matInput placeholder="user@email.com" #email>
+  </mat-form-field>
+  <mat-form-field class="example-form-field">
+    <mat-lable>Password</mat-lable>
+    <input type="password" matInput #password>
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)='login(email.value, password,value)'>Login</button>
+</mat-card>
+<mat-card *ngIf='isLoggedIn'>
+  <button mat-flat-button color="primary" (click)='logout()'>Logout</button>
+</mat-card>
+  <router-outlet></router-outlet>
+</div>
